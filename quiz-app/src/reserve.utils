@@ -1,0 +1,200 @@
+import Link from "next/link";
+import React from "react";
+
+const Home = () => {
+  return (
+    <div>
+      <h1>Welcome to Quiz App</h1>
+      <Link to="/Login">
+        Next <span></span>{" "}
+      </Link>
+    </div>
+  );
+};
+
+export default Home;
+
+"use client";
+
+import Link from "next/link";
+import React, { useState } from "react";
+
+// interface HomeProps {
+//   query: string;
+//   setQuery : (query : string) => void
+// }
+
+const Login = () => {
+  const [query, setQuery] = useState("");
+  const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const checkName = query && query.length >= 3;
+
+  function handleSubmit() {
+    console.log("hello");
+  }
+
+  const handleSpinner = () => {
+    setLoading(true);
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setEmail(value);
+
+    if (value === "") {
+      setError("");
+    } else {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(value)) {
+        setError("Invalid email format");
+      } else {
+        setError("");
+      }
+    }
+  };
+
+  return (
+    <div className="w-full h-screen grid place-items-center grid-cols-1">
+      <form className="py-12 px-8" onSubmit={handleSubmit}>
+        <h2 className="pb-8 text-center text-black font-bold text-2xl">
+          Hello Friend 😊
+        </h2>
+        <div className="flex flex-col">
+          {/* name input */}
+          <div>
+            <div className="mb-3">
+              <input
+                type="text"
+                placeholder="Enter your name..."
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                className={`rounded-lg py-2 px-4 bg-transparent placeholder-yellow-100
+                 text-black border-black border border-opacity-25 focus:border-opacity-100 focus:border-green-950 focus:outline-none ${
+                   loading ? "opacity-50 cursor-not-allowed" : ""
+                 }`}
+                required
+                disabled={loading}
+              />
+              {query.length < 3 && (
+                <>
+                  <p
+                    className={`text-xs text-red-500 mt-1 mb-4 ${
+                      !query ? "opacity-0" : "opacity-100"
+                    }`}
+                  >
+                    Cannot be less than three characters
+                  </p>
+                </>
+              )}
+            </div>
+
+            {/* username input */}
+            <div className="mb-6">
+              <input
+                type="email"
+                value={email}
+                placeholder="example@gmail.com"
+                className={`py-2 px-4 rounded-lg placeholder-yellow-100 bg-transparent border-black border border-opacity-25 focus:border-opacity-100 focus:border-black focus:outline-none ${
+                  error ? "border-red-500 focus:border-red-800" : "border-black"
+                }`}
+                onChange={handleChange}
+                required
+              />
+              {error && <p className="text-md mt-1 text-red-400">{error}</p>}
+            </div>
+          </div>
+          {/* end of inputs field */}
+
+          <Link
+            href="/quiz"
+            className={`w-full rounded-lg flex justify-center items-center gap-4 font-medium bg-blue-950 text-white py-2 cursor-pointer transition-all duration-500 ease-in-out delay-100 ${
+              checkName && email ? "opacity-100 visible" : "opacity-0 invisible"
+            }`}
+            onClick={handleSpinner}
+          >
+            Get started
+            {loading && (
+              <div className="h-4 w-4 rounded-full border-white border-b-0 border-2 border-solid animate-spin"></div>
+            )}
+          </Link>
+        </div>
+      </form>
+    </div>
+  );
+};
+
+export default Login;
+
+
+ === option
+              ? option === quiz[currentIndex].correct_answer
+                ? "bg-green-500 font-extrabold"
+                : "bg-red-500"
+              :
+
+                   {/* <span className="font-semibold text-md text-gray-700">
+            {String.fromCharCode(65 + index)}.)
+          </span> */}
+
+          useEffect(() => {
+    if (quiz.length > 0) {
+      const savedShuffledOptions = JSON.parse(
+        sessionStorage.getItem("shuffledOptions") || "{}"
+      );
+
+      if (savedShuffledOptions[currentIndex]) {
+        // Use stored shuffled options
+        setShuffledOptions(savedShuffledOptions[currentIndex]);
+      } else {
+        // Shuffle options and save them for the current question
+        const options = [
+          ...quiz[currentIndex].incorrect_answers,
+          quiz[currentIndex].correct_answer,
+        ];
+        const shuffled = shuffleAnswers(options);
+
+      //   const updatedShuffledOptions = {
+      //     ...savedShuffledOptions,
+      //     [currentIndex]: shuffled,
+      //   };
+      //   sessionStorage.setItem(
+      //     "shuffledOptions",
+      //     JSON.stringify(updatedShuffledOptions)
+      //   );
+      //   setShuffledOptions(shuffled);
+      // }
+
+    //   const quizState = JSON.parse(sessionStorage.getItem("quizState") || "{}");
+    //   setSelectedOption(quizState[currentIndex] || "");
+    // }
+  }, [quiz, currentIndex]);
+
+
+        {/* overlay */}
+      <div
+        className={`absolute w-full top-2/4 text-center py-10 left-0 z-30 bg-gray-200 ${
+          showModal ? "opacity-100 visible" : "invisible opacity-0"
+        }`}
+      >
+        <div className="text-xl">
+          You got{" "}
+          <span
+            className={`font-bold ${
+              score > 17 ? "text-green-500" : "text-black"
+            }  ${score < 10 ? "text-red-500" : "text-black"}`}
+          >
+            {score}
+          </span>{" "}
+          out of <span className="font-bold">{quiz.length}</span>
+        </div>
+
+        <button
+          type="submit"
+          className="bg-yellow-950 mt-3 text-white rounded-md px-3 py-1"
+        >
+          Try again
+        </button>
+      </div>
+      {/* end of overlay */}
