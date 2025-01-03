@@ -22,7 +22,7 @@ const Home = () => {
       {loading ? (
         <Loader />
       ) : (
-        <div className="grid place-items-center w-full h-screen">
+        <div className="bg-[#f9f9f9] grid place-items-center w-full h-screen">
           <div>
             <h1 className="font-bold text-3xl text-center text-black pb-6">
               Quiz App
@@ -31,7 +31,7 @@ const Home = () => {
             <div className="grid place-items-center">
               <Link
                 href="/login"
-                className="bg-blue-950 text-md text-white py-2 px-4 flex items-center text-center"
+                className="bg-yellow-950 text-md text-white py-2 px-4 flex items-center duration-100 transition-all text-center lg:hover:bg-yellow-800"
               >
                 Next{" "}
                 <span>

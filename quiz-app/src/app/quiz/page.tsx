@@ -24,7 +24,7 @@ const Page = () => {
   const [activeNumber, setActiveNumber] = useState(0);
   const [query, setQuery] = useState("");
   const [selectedOption, setSelectedOption] = useState<string>("");
-  const [time, setTime] = useState(1 * 60);
+  const [time, setTime] = useState(15 * 60);
   const [showModal, setShowModal] = useState(false);
   const [isRunning, setIsRunning] = useState(true);
 
@@ -86,17 +86,18 @@ const Page = () => {
     }, 0);
 
     setScore(totalScore);
+    sessionStorage.setItem("score", JSON.stringify(totalScore));
   };
 
   const handleTryAgain = () => {
     setCurrentIndex(0);
     setActiveNumber(0);
     setShowModal(false);
-    setTime(1 * 60);
+    setTime(15 * 60);
     setIsRunning(true);
 
     sessionStorage.removeItem("quizState");
-    sessionStorage.setItem("quizTimer", (1 * 60).toString());
+    sessionStorage.setItem("quizTimer", (15 * 60).toString());
   };
 
   useEffect(() => {
@@ -119,8 +120,8 @@ const Page = () => {
       {loading ? (
         <Loader />
       ) : (
-        <div className="relative grid grid-cols-1 w-full h-screen">
-          <div className="px-4 mx-auto sm:w-3/5 lg:w-2/5 sm:bg-red-200">
+        <div className="relative grid grid-cols-1 w-full h-screen bg-[#F9F9F9]">
+          <div className="px-4 mx-auto sm:w-3/5 lg:w-2/5 sm:bg-gray-100">
             {/* name tag */}
             <div className="flex mt-2 justify-between items-center">
               <h2>
