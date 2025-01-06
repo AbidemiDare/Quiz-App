@@ -13,6 +13,7 @@ const Login = () => {
   const [query, setQuery] = useState("");
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
+  const [load, setLoad] = useState(true);
   const [error, setError] = useState("");
   const checkName = query && query.length >= 3;
 
@@ -42,21 +43,21 @@ const Login = () => {
   };
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(true);
+    const timeLoader = setTimeout(() => {
+      setLoad(false);
     }, 1000);
 
     return () => {
-      clearTimeout(timer);
+      clearTimeout(timeLoader);
     };
   }, []);
 
   return (
     <>
-      {!loading ? (
+      {load ? (
         <Loader />
       ) : (
-        <div className="w-full h-screen grid place-items-center grid-cols-1">
+        <div className="bg-[#F9F9F9] w-full h-screen grid place-items-center grid-cols-1">
           <form className="py-12 px-2">
             <h2 className="pb-8 text-center text-black font-bold text-2xl">
               Hello Friend 😊
@@ -71,9 +72,9 @@ const Login = () => {
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     className={`rounded-lg w-full py-2 px-4 bg-transparent placeholder-gray-700
-                 text-black border-black border border-opacity-25 focus:border-opacity-100 focus:border-green-950 focus:outline-none ${
-                   loading ? "opacity-50 cursor-not-allowed" : ""
-                 }`}
+                    text-black border-black border border-opacity-25 focus:border-opacity-100 focus:border-green-950 focus:outline-none ${
+                      loading ? "opacity-50 cursor-not-allowed" : ""
+                    }`}
                     disabled={loading}
                     required
                   />
@@ -131,8 +132,12 @@ const Login = () => {
           <div className="">
             <p>
               {" "}
-              <span className="font-bold text-lg">©</span>{" "}
-              <span className="text-black font-normal">Abidemi Dare</span>
+              <span className="font-bold text-lg">
+                <b>©</b>
+              </span>{" "}
+              <span className="text-black font-normal">
+                <b>Abidemi Dare</b>
+              </span>
             </p>
           </div>
         </div>
