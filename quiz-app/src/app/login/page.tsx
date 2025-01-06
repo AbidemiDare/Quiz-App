@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import Loader from "../components/loader";
 
 // interface HomeProps {
 //   query: string;
@@ -40,88 +41,102 @@ const Login = () => {
     }
   };
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(true);
+    }, 1000);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+
   return (
     <>
-      <div className="w-full h-screen grid place-items-center grid-cols-1">
-        <form className="py-12 px-2">
-          <h2 className="pb-8 text-center text-black font-bold text-2xl">
-            Hello Friend 😊
-          </h2>
-          <div className="flex flex-col">
-            {/* name input */}
-            <div>
-              <div className="mb-3">
-                <input
-                  type="text"
-                  placeholder="Enter your name..."
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                  className={`rounded-lg w-full py-2 px-4 bg-transparent placeholder-gray-700
+      {!loading ? (
+        <Loader />
+      ) : (
+        <div className="w-full h-screen grid place-items-center grid-cols-1">
+          <form className="py-12 px-2">
+            <h2 className="pb-8 text-center text-black font-bold text-2xl">
+              Hello Friend 😊
+            </h2>
+            <div className="flex flex-col">
+              {/* name input */}
+              <div>
+                <div className="mb-3">
+                  <input
+                    type="text"
+                    placeholder="Enter your name..."
+                    value={query}
+                    onChange={(e) => setQuery(e.target.value)}
+                    className={`rounded-lg w-full py-2 px-4 bg-transparent placeholder-gray-700
                  text-black border-black border border-opacity-25 focus:border-opacity-100 focus:border-green-950 focus:outline-none ${
                    loading ? "opacity-50 cursor-not-allowed" : ""
                  }`}
-                  disabled={loading}
-                  required
-                />
-                {query.length < 3 && (
-                  <>
-                    <p
-                      className={`text-xs text-red-500 mt-1 mb-4 ${
-                        !query ? "opacity-0" : "opacity-100"
-                      }`}
-                    >
-                      Cannot be less than three characters
-                    </p>
-                  </>
-                )}
-              </div>
+                    disabled={loading}
+                    required
+                  />
+                  {query.length < 3 && (
+                    <>
+                      <p
+                        className={`text-xs text-red-500 mt-1 mb-4 ${
+                          !query ? "opacity-0" : "opacity-100"
+                        }`}
+                      >
+                        Cannot be less than three characters
+                      </p>
+                    </>
+                  )}
+                </div>
 
-              {/* username input */}
-              <div className="mb-6">
-                <input
-                  type="email"
-                  value={email}
-                  placeholder="example@gmail.com"
-                  className={`py-2 px-4 rounded-lg placeholder-gray-700 bg-transparent border-black border border-opacity-25 focus:border-opacity-100 focus:border-black focus:outline-none ${
-                    error
-                      ? "border-red-500 focus:border-red-800"
-                      : "border-black"
-                  }  ${loading ? "opacity-50 cursor-not-allowed" : ""}}`}
-                  onChange={handleChange}
-                  disabled={loading}
-                  required
-                />
-                {error && (
-                  <p className="text-xs mt-1 mb-4 text-red-500">{error}</p>
-                )}
+                {/* username input */}
+                <div className="mb-6">
+                  <input
+                    type="email"
+                    value={email}
+                    placeholder="example@gmail.com"
+                    className={`py-2 px-4 rounded-lg placeholder-gray-700 bg-transparent border-black border border-opacity-25 focus:border-opacity-100 focus:border-black focus:outline-none ${
+                      error
+                        ? "border-red-500 focus:border-red-800"
+                        : "border-black"
+                    }  ${loading ? "opacity-50 cursor-not-allowed" : ""}}`}
+                    onChange={handleChange}
+                    disabled={loading}
+                    required
+                  />
+                  {error && (
+                    <p className="text-xs mt-1 mb-4 text-red-500">{error}</p>
+                  )}
+                </div>
               </div>
+              {/* end of inputs field */}
+
+              <Link
+                href="/quiz"
+                className={`w-full rounded-lg flex justify-center items-center gap-4 font-medium bg-blue-950 text-white py-2 cursor-pointer transition-all duration-500 ease-in-out delay-100 ${
+                  checkName && email && !error
+                    ? "opacity-100 visible"
+                    : "opacity-0 invisible"
+                }`}
+                onClick={handleSpinner}
+              >
+                Get started
+                {loading && (
+                  <div className="h-4 w-4 rounded-full border-white border-b-0 border-2 border-solid animate-spin"></div>
+                )}
+              </Link>
             </div>
-            {/* end of inputs field */}
-
-            <Link
-              href="/quiz"
-              className={`w-full rounded-lg flex justify-center items-center gap-4 font-medium bg-blue-950 text-white py-2 cursor-pointer transition-all duration-500 ease-in-out delay-100 ${
-                checkName && email && !error
-                  ? "opacity-100 visible"
-                  : "opacity-0 invisible"
-              }`}
-              onClick={handleSpinner}
-            >
-              Get started
-              {loading && (
-                <div className="h-4 w-4 rounded-full border-white border-b-0 border-2 border-solid animate-spin"></div>
-              )}
-            </Link>
+          </form>
+          <div className="">
+            <p>
+              {" "}
+              <span className="font-bold text-lg">©</span>{" "}
+              <span className="text-black font-normal">Abidemi Dare</span>
+            </p>
           </div>
-        </form>
-        <div className="">
-          <p>
-            {" "}
-            <span className="font-bold text-lg">©</span>{" "}
-            <span className="text-black font-normal">Abidemi Dare</span>
-          </p>
         </div>
-      </div>
+      )}
     </>
   );
 };
