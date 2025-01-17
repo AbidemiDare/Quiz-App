@@ -17,7 +17,7 @@ const Reset: React.FC<ResetProps> = ({ setCurrentIndex, setActiveNumber }) => {
     <div>
       {/* rESET BUTTON */}
       <button
-        className="bg-yellow-950 text-xs text-white px-3 py-2 rounded-md"
+        className="bg-yellow-950 text-sm text-white px-5 py-3 rounded-md"
         onClick={handleReset}
       >
         Reset

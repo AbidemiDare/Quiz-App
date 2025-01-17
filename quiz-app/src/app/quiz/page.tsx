@@ -234,15 +234,17 @@ const Page = () => {
         <div className="fixed flex items-center justify-center top-0 left-0 z-30 w-full h-screen bg-black bg-opacity-30">
           <div className="text-center bg-white lg:px-12 rounded-lg shadow-lg p-10">
             <div className="text-xl">
-              You got{" "}
-              <span
-                className={`font-bold ${
-                  score > 17 ? "text-green-500" : "text-black"
-                }  ${score < 10 ? "text-red-500" : "text-black"}`}
-              >
-                {score}
-              </span>{" "}
-              out of <span className="font-bold">{quiz.length}</span>
+              <p className="text-black text-xl">
+                You got
+                <span
+                  className={`font-bold ${
+                    score > 17 ? "text-green-500" : "text-black"
+                  }  ${score < 10 ? "text-red-500" : "text-black"}`}
+                >
+                  {score}
+                </span>{" "}
+                out of <span className="font-bold">{quiz.length}</span>
+              </p>
             </div>
 
             <div className="flex gap-2 mt-4 lg:gap-6">
