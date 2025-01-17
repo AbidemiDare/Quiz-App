@@ -235,7 +235,7 @@ const Page = () => {
           <div className="text-center bg-white lg:px-12 rounded-lg shadow-lg p-10">
             <div className="text-xl">
               <p className="text-black text-xl">
-                You got
+                You got{" "}
                 <span
                   className={`font-bold ${
                     score > 17 ? "text-green-500" : "text-black"
