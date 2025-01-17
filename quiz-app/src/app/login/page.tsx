@@ -71,7 +71,7 @@ const Login = () => {
                     placeholder="Enter your name..."
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
-                    className={`rounded-lg w-full py-2 px-4 bg-transparent placeholder-gray-700
+                    className={`rounded-lg w-full py-3 px-4 bg-transparent placeholder-gray-700
                     text-black border-black border border-opacity-25 focus:border-opacity-100 focus:border-green-950 focus:outline-none ${
                       loading ? "opacity-50 cursor-not-allowed" : ""
                     }`}
@@ -97,7 +97,7 @@ const Login = () => {
                     type="email"
                     value={email}
                     placeholder="example@gmail.com"
-                    className={`py-2 px-4 rounded-lg placeholder-black bg-transparent border-black border border-opacity-25 focus:outline-none ${
+                    className={`py-3 px-4 rounded-lg placeholder-black bg-transparent border border-black border-opacity-20 focus:outline-none ${
                       error
                         ? "border-red-500 focus:border-red-800"
                         : "border-black"

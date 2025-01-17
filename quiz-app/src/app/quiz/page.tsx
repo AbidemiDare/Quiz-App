@@ -123,7 +123,7 @@ const Page = () => {
         <div className="relative grid grid-cols-1 w-full h-screen bg-[#F9F9F9]">
           <div className="px-4 mx-auto sm:w-3/5 lg:w-2/5 sm:bg-gray-100">
             {/* name tag */}
-            <div className="flex my-4 justify-between items-center">
+            <div className="flex mt-4 mb-2 justify-between items-center">
               <h2>
                 <span className="text-xl text-black">Welcome,</span>{" "}
                 <b className="text-xl text-black">{query.toUpperCase()}!</b>{" "}
@@ -166,7 +166,7 @@ const Page = () => {
             {quiz.length > 0 && !loading ? (
               <>
                 <div className="grid gap-1 grid-rows-[auto,1fr,auto]">
-                  <div className="transition-opacity duration-300 delay-700">
+                  <div className="transition-opacity duration-300 delay-700 my-2">
                     <Questions currentIndex={currentIndex} quiz={quiz} />
 
                     <Options
@@ -177,7 +177,7 @@ const Page = () => {
                     />
                   </div>
 
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2 mb-3">
                     {Array.from({ length: 30 }, (_, i) => {
                       const quizState = JSON.parse(
                         sessionStorage.getItem("quizState") || "{}"
@@ -211,7 +211,7 @@ const Page = () => {
                     onNext={handleNext}
                   />
 
-                  <div className="mx-auto">
+                  <div className="mx-auto mt-3">
                     <button
                       type="submit"
                       className="bg-green-600 cursor-pointer text-white text-sm py-3 px-5 tracking-wide rounded-lg"
