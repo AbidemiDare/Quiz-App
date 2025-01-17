@@ -97,7 +97,7 @@ const Login = () => {
                     type="email"
                     value={email}
                     placeholder="example@gmail.com"
-                    className={`py-2 px-4 rounded-lg placeholder:text-black bg-transparent border-black border border-opacity-25 focus:border-opacity-100 focus:border-black focus:outline-none ${
+                    className={`py-2 px-4 rounded-lg placeholder-black bg-transparent border-black border border-opacity-25 focus:border-opacity-100 focus:border-black focus:outline-none ${
                       error
                         ? "border-red-500 focus:border-red-800"
                         : "border-black"
