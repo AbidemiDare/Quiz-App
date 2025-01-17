@@ -123,15 +123,15 @@ const Page = () => {
         <div className="relative grid grid-cols-1 w-full h-screen bg-[#F9F9F9]">
           <div className="px-4 mx-auto sm:w-3/5 lg:w-2/5 sm:bg-gray-100">
             {/* name tag */}
-            <div className="flex mt-2 justify-between items-center">
+            <div className="flex my-4 justify-between items-center">
               <h2>
-                <span className="text-lg">Welcome,</span>{" "}
-                <b className="text-base">{query.toUpperCase()}!</b>{" "}
+                <span className="text-xl text-black">Welcome,</span>{" "}
+                <b className="text-xl text-black">{query.toUpperCase()}!</b>{" "}
               </h2>
             </div>
 
             {/* Header */}
-            <div className="flex mt-0 mb-0 justify-between items-center w-full">
+            <div className="flex mt-0 mb-2 justify-between items-center w-full">
               <Link href="/login">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -143,7 +143,7 @@ const Page = () => {
                   stroke-width="2"
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  className="lucide lucide-arrow-left text-2xl"
+                  className="text-black lucide lucide-arrow-left text-2xl"
                 >
                   <path d="m12 19-7-7 7-7" />
                   <path d="M19 12H5" />
@@ -214,7 +214,7 @@ const Page = () => {
                   <div className="mx-auto">
                     <button
                       type="submit"
-                      className="bg-green-600 cursor-pointer text-white text-sm py-2 px-3 rounded-lg"
+                      className="bg-green-600 cursor-pointer text-white text-sm py-3 px-5 tracking-wide rounded-lg"
                       onClick={handleSubmit}
                     >
                       Submit
@@ -271,7 +271,7 @@ const Page = () => {
           <div className="text-center bg-white lg:px-12 rounded-lg shadow-lg p-10">
             <div>
               <h3 className="text-lg">Time elapsed 🕐</h3>
-              <div>
+              <div className="text-black">
                 You got{" "}
                 <span
                   className={`font-bold ${

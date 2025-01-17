@@ -97,7 +97,7 @@ const Login = () => {
                     type="email"
                     value={email}
                     placeholder="example@gmail.com"
-                    className={`py-2 px-4 rounded-lg placeholder-gray-700 bg-transparent border-black border border-opacity-25 focus:border-opacity-100 focus:border-black focus:outline-none ${
+                    className={`py-2 px-4 rounded-lg bg-transparent border-black border border-opacity-25 focus:border-opacity-100 focus:border-black focus:outline-none ${
                       error
                         ? "border-red-500 focus:border-red-800"
                         : "border-black"
@@ -107,7 +107,7 @@ const Login = () => {
                     required
                   />
                   {error && (
-                    <p className="text-xs mt-1 mb-4 text-red-500">{error}</p>
+                    <p className="text-sm mt-1 mb-4 text-red-500">{error}</p>
                   )}
                 </div>
               </div>
@@ -132,10 +132,8 @@ const Login = () => {
           <div className="">
             <p>
               {" "}
-              <span className="font-bold text-lg">
-                <b>©</b>
-              </span>{" "}
-              <span className="text-black font-normal">
+              <span className="font-bold text-2xl">&copy;</span>{" "}
+              <span className="text-black font-normal text-2xl">
                 <b>Abidemi Dare</b>
               </span>
             </p>

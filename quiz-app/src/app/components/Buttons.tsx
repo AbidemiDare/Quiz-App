@@ -36,13 +36,13 @@ const Buttons: React.FC<ButtonsProps> = ({
     <div>
       <div className="flex justify-between items-center mt-3">
         <button
-          className="bg-yellow-950 cursor-pointer text-white text-xs py-2 px-3 rounded-lg"
+          className="bg-yellow-950 cursor-pointer text-white text-sm py-3 px-5 rounded-lg"
           onClick={handlePrevious}
         >
           Previous
         </button>
         <button
-          className="bg-yellow-950 cursor-pointer text-white text-xs py-2 px-3 rounded-lg"
+          className="bg-yellow-950 cursor-pointer text-white text-sm py-3 px-5 rounded-lg"
           onClick={onNext}
         >
           Next
