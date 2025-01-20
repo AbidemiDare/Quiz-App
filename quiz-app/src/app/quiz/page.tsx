@@ -214,7 +214,7 @@ const Page = () => {
                   <div className="mx-auto mt-3">
                     <button
                       type="submit"
-                      className="bg-green-600 cursor-pointer text-white text-sm py-3 px-5 tracking-wide rounded-lg"
+                      className="bg-green-600 cursor-pointer text-white text-base py-4 px-6 tracking-wide rounded-lg"
                       onClick={handleSubmit}
                     >
                       Submit

@@ -24,14 +24,14 @@ const Home = () => {
       ) : (
         <div className="bg-[#f9f9f9] grid place-items-center w-full h-screen">
           <div>
-            <h1 className="font-bold text-4xl text-center text-black pb-6">
+            <h1 className="font-bold text-5xl text-center text-black pb-6">
               Quiz App
             </h1>
 
             <div className="grid place-items-center">
               <Link
                 href="/login"
-                className="bg-yellow-950 text-base text-white py-4 px-6 flex items-center duration-100 transition-all text-center lg:hover:bg-yellow-800"
+                className="bg-yellow-950 text-lg text-white py-4 px-6 flex items-center duration-100 transition-all text-center lg:hover:bg-yellow-800"
               >
                 Next{" "}
                 <span>

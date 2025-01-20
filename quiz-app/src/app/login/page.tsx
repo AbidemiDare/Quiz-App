@@ -116,7 +116,7 @@ const Login = () => {
 
               <Link
                 href="/quiz"
-                className={`w-full rounded-lg flex justify-center items-center gap-4 font-medium bg-blue-950 text-white py-2 cursor-pointer transition-all duration-500 ease-in-out delay-100 ${
+                className={`w-full rounded-lg flex justify-center items-center gap-4 font-medium bg-blue-950 text-white py-4 cursor-pointer transition-all duration-500 ease-in-out delay-100 ${
                   checkName && email && !error
                     ? "opacity-100 visible"
                     : "opacity-0 invisible"
