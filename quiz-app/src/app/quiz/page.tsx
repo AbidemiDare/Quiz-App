@@ -214,7 +214,7 @@ const Page = () => {
                   <div className="mx-auto mt-3">
                     <button
                       type="submit"
-                      className="bg-green-600 cursor-pointer text-white text-base py-4 px-6 tracking-wide rounded-lg"
+                      className="bg-green-600 cursor-pointer text-white text-lg py-4 px-6 tracking-wide rounded-lg"
                       onClick={handleSubmit}
                     >
                       Submit
@@ -272,17 +272,21 @@ const Page = () => {
         <div className="fixed flex items-center justify-center top-0 left-0 z-30 w-full h-screen bg-black bg-opacity-30">
           <div className="text-center bg-white lg:px-12 rounded-lg shadow-lg p-10">
             <div>
-              <h3 className="text-lg">Time elapsed 🕐</h3>
-              <div className="text-black">
-                You got{" "}
-                <span
-                  className={`font-bold ${
-                    score > 17 ? "text-green-500" : "text-black"
-                  }  ${score < 10 ? "text-red-500" : "text-black"}`}
-                >
-                  {score}
-                </span>{" "}
-                out of <span className="font-bold">{quiz.length}</span>
+              <h3 className="text-lg text-black">
+                Time elapsed <span className="texxt-black">🕐</span>{" "}
+              </h3>
+              <div className="text-xl">
+                <p className="text-black text-xl">
+                  You got{" "}
+                  <span
+                    className={`font-bold ${
+                      score > 17 ? "text-green-500" : "text-black"
+                    }  ${score < 10 ? "text-red-500" : "text-black"}`}
+                  >
+                    {score}
+                  </span>{" "}
+                  out of <span className="font-bold">{quiz.length}</span>
+                </p>
               </div>
             </div>
 
