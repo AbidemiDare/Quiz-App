@@ -78,15 +78,31 @@ const Page = () => {
   const handleSubmit = () => {
     setIsRunning(false);
     setShowModal(true);
+
     const quizState = JSON.parse(sessionStorage.getItem("quizState") || "{}");
 
+    // Initialize the score and an array for correct answers
     const totalScore = quiz.reduce((score, question, index) => {
       const selectedOption = quizState[index];
-      return selectedOption === question.correct_answer ? score + 1 : score;
+      if (selectedOption === question.correct_answer) {
+        return score + 1;
+      }
+      return score;
     }, 0);
+
+    // Get all the correct answers
+    const correctAnswers = quiz.map((question, index) => {
+      return {
+        question: question.question,
+        correctAnswer: question.correct_answer,
+        selectedAnswer: quizState[index],
+        isCorrect: quizState[index] === question.correct_answer,
+      };
+    });
 
     setScore(totalScore);
     sessionStorage.setItem("score", JSON.stringify(totalScore));
+    sessionStorage.setItem("correctAnswers", JSON.stringify(correctAnswers));
   };
 
   const handleTryAgain = () => {
@@ -114,6 +130,10 @@ const Page = () => {
 
     sessionStorage.setItem("currentIndex", index.toString());
   };
+
+  const correctAnswers: Answer[] = JSON.parse(
+    sessionStorage.getItem("correctAnswers") || "[]"
+  );
 
   return (
     <div>
@@ -232,7 +252,7 @@ const Page = () => {
       {/* Overlay */}
       {showModal && (
         <div className="fixed flex items-center justify-center top-0 left-0 z-30 w-full h-screen bg-black bg-opacity-30">
-          <div className="text-center bg-white lg:px-12 rounded-lg shadow-lg p-10">
+          <div className="text-center w-[95vw] lg:w-3/5 mx-auto bg-white lg:px-12 rounded-lg shadow-lg p-10">
             <div className="text-xl">
               <p className="text-black text-xl">
                 You got{" "}
@@ -247,19 +267,49 @@ const Page = () => {
               </p>
             </div>
 
-            <div className="flex gap-2 mt-4 lg:gap-6">
+            {/* Correct answers */}
+            <div className="mt-4">
+              <h3 className="font-bold text-xl mb-2">Correct Answers</h3>
+              <div className="max-h-60 overflow-y-auto">
+                {correctAnswers.map((answer, index) => (
+                  <div key={index} className="mb-3">
+                    <p className="font-medium">
+                      {`${index + 1}. ${answer.question}`}
+                    </p>
+                    <p
+                      className={`${
+                        answer.isCorrect ? "text-green-500" : "text-red-500"
+                      }`}
+                    >
+                      Correct Answer: {answer.correctAnswer}
+                    </p>
+                    {answer.selectedAnswer && (
+                      <p
+                        className={`${
+                          answer.isCorrect ? "text-green-500" : "text-red-500"
+                        }`}
+                      >
+                        Your Answer: {answer.selectedAnswer}
+                      </p>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="flex justify-center items-center gap-2 mt-4 lg:gap-6">
               <button
                 type="submit"
-                className="bg-yellow-950 text-md text-white rounded-md px-3 py-1"
+                className="bg-yellow-950 text-md text-white rounded-md px-3 py-1 lg:py-3 lg:px-5"
                 onClick={handleTryAgain}
               >
                 Try again
               </button>
               <Link
                 href="/login"
-                className="bg-yellow-950 rounded-md px-3 py-1 text-white"
+                className="bg-yellow-950 lg:py-3 lg:px-5 rounded-md px-3 py-1 text-white"
               >
-                Close
+                <button>Close</button>
               </Link>
             </div>
           </div>
