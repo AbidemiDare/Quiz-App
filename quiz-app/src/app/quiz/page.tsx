@@ -252,7 +252,7 @@ const Page = () => {
       {/* Overlay */}
       {showModal && (
         <div className="fixed flex items-center justify-center top-0 left-0 z-30 w-full h-screen bg-black bg-opacity-30">
-          <div className="text-center w-[95vw] lg:w-3/5 mx-auto bg-white lg:px-12 rounded-lg shadow-lg p-10">
+          <div className="text-center w-[94vw] lg:w-3/5 mx-auto bg-white lg:px-12 rounded-lg shadow-lg p-10">
             <div className="text-xl">
               <p className="text-black text-xl">
                 You got{" "}
